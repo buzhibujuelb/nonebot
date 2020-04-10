@@ -71,7 +71,7 @@ async def crawl(oj, id, session):
     elif oj == "loj":
         for _ in range(SUBMISSION_LIMIT):
             cur = res[_]
-            ret = f'{ret}\n#{cur["info"]["submissionId"]} #{cur["info"]["problemId"]}.#{cur["info"]["problemName"]} {cur["result"]["score"]} {cur["info"]["language"]} {cur["info"]["submitTime"]}'
+            ret = f'{ret}\n#{cur["info"]["submissionId"]} #{cur["info"]["problemId"]}.{cur["info"]["problemName"]} {cur["result"]["score"]} {cur["info"]["language"]} {cur["info"]["submitTime"]}'
     elif oj == "bzoj":
         for index in range(0, min(len(res), 11 * SUBMISSION_LIMIT), 11):
             ret = "%s\n#%s #%s %s %s %s" % (ret, res[index], res[index + 2], res[index + 3], res[index + 8], res[index + 10],)
@@ -84,7 +84,7 @@ async def crawl(oj, id, session):
         res = res["result"]
         for _ in range(SUBMISSION_LIMIT):
             cur = res[_]
-            ret = f'{ret}\n#{cur["id"]} #{cur["problem"]["contestId"]}{cur["problem"]["index"]}.#{cur["problem"]["name"]} {cur["verdict"]} {cur["programmingLanguage"]} {(datetime.datetime.utcfromtimestamp(cur["creationTimeSeconds"])).strftime("%Y-%m-%d %H:%M:%S")}'
+            ret = f'{ret}\n#{cur["id"]} #{cur["problem"]["contestId"]}{cur["problem"]["index"]}.{cur["problem"]["name"]} {cur["verdict"]} {cur["programmingLanguage"]} {(datetime.datetime.utcfromtimestamp(cur["creationTimeSeconds"])).strftime("%Y-%m-%d %H:%M:%S")}'
     elif oj == "atcoder":
         res.sort(key=lambda x: x["id"], reverse=True)
         for _ in range(SUBMISSION_LIMIT):
