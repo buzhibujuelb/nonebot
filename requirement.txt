@@ -1,3 +1,4 @@
+nonebot
 cn2an
 requests
 docker
