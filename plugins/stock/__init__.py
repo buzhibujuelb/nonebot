@@ -18,7 +18,7 @@ PATH2PIC=os.path.join(os.path.abspath('.'),'screenshot.png')
 
 async def get_pic(session):
     browser = await launch({
-        'headless': False,
+        'headless': True,
         'args': [ '--hide-scrollbars' ],
         'dumpio': True,  
         })
