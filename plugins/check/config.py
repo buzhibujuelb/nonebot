@@ -6,7 +6,7 @@ PATTERN = {"uoj": r'//div[@class="table-responsive"]//table[@class="table table-
 cookies = {
     "luogu": {
         "_uid": "22250",
-        "__client_id": "dfd8741da43254b3608baf192acd96912cede94f",
+        "__client_id": "118da96277db84df8a3b7908f81489bf61749028",
     }
 }
 
@@ -59,10 +59,10 @@ luogu_sta_dict = {
 URLS = {
     "uoj": "http://uoj.ac/submissions?submitter=",
     "loj": "https://loj.ac/submissions?submitter=",
-    "luogu": "https://www.luogu.com.cn/record/list?user=",
     "bzoj": "http://lydsy.com/JudgeOnline/status.php?user_id=",
     "atcoder": "https://kenkoooo.com/atcoder/atcoder-api/results?user=",
     "cf": f"https://codeforces.com/api/user.status?from=1&count={SUBMISSION_LIMIT}&handle=",
+    "luogu": "https://www.luogu.com.cn/record/list?user=",
 }
 
 ATCODER_PROBLEM_NAME = {
