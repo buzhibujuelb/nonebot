@@ -1,6 +1,8 @@
 nonebot
+pyppeteer
 cn2an
 requests
 docker
 lxml
 fake_useragent
+aiohttp
