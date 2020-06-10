@@ -1,10 +1,12 @@
 # coding:utf-8
 from nonebot import on_command, CommandSession
 from nonebot.log import logger
-import json, time, html, collections, re, aiohttp, datetime
+import json, time, html, collections, re, aiohttp, datetime, random, os
 from urllib import parse
 from lxml import html as lhtml
-from fake_useragent import UserAgent
+#from fake_useragent import UserAgent
+with open(os.path.join(os.path.dirname(__file__),'ua.json'),'r',encoding='utf-8') as f:
+    ua=json.load(f)
 
 if __name__ == "__main__":
     from config import *
@@ -19,13 +21,13 @@ async def getres(oj, id):
     url = URLS[oj] + id
 
     if oj in ["uoj", "bzoj"]:
-        async with aiohttp.ClientSession(headers={"user-agent": UserAgent().random}) as session:
+        async with aiohttp.ClientSession(headers={"user-agent": random.choice(random.choice(list(ua.values())))}) as session:
             async with session.get(url) as resp:
                 html = await resp.text()
         tree = lhtml.fromstring(html)
         return tree.xpath(PATTERN[oj])
     elif oj in ["luogu", "loj"]:
-        async with aiohttp.ClientSession(headers={"user-agent": UserAgent().random}, cookies=cookies.setdefault(oj, ""),) as session:
+        async with aiohttp.ClientSession(headers={"user-agent": random.choice(random.choice(list(ua.values())))}, cookies=cookies.setdefault(oj, ""),) as session:
             async with session.get(url) as resp:
                 text = await resp.text()
         s = re.findall(PATTERN[oj], text)[0]
@@ -39,7 +41,7 @@ async def getres(oj, id):
             return
         return s
     elif oj in ["cf", "atcoder"]:
-        async with aiohttp.ClientSession(headers={"user-agent": UserAgent().random}) as session:
+        async with aiohttp.ClientSession(headers={"user-agent": random.choice(random.choice(list(ua.values())))}) as session:
             async with session.get(url) as resp:
                 js = await resp.json()
 
